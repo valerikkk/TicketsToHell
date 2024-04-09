@@ -1,4 +1,9 @@
 package commands;
+
+import managers.AllManagers;
+
+import java.util.Map;
+
 public class Help extends Command {
 
     public Help() {
@@ -6,7 +11,9 @@ public class Help extends Command {
     }
     @Override
     public void run() {
-        //TODO Передаём хэш-мапу из названий всех комманд и описаний и вызывем всё
-        System.out.println("help");
+        Map<String, Command> map= AllManagers.createAllManagers().getCommandManager().getCommands();
+        for (Command command: map.values()) {
+            System.out.println(command.getNameInConsole() +": " + command.getDescription());
+        }
     }
 }

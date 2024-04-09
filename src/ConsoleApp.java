@@ -1,3 +1,4 @@
+import commands.Add;
 import commands.Exit;
 import commands.Help;
 import commands.Show;
@@ -12,7 +13,11 @@ public class ConsoleApp {
         AllManagers all = AllManagers.createAllManagers();
         all.setCollectionManager(new CollectionManager());
         all.setScanner(new Scanner(System.in));
-        all.setCommandManager(new CommandManager(new Exit(), new Help(), new Show()));
+        all.setCommandManager(new CommandManager(
+                new Exit(),
+                new Help(),
+                new Show(),
+                new Add()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
     }
