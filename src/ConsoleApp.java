@@ -1,7 +1,4 @@
-import commands.Add;
-import commands.Exit;
-import commands.Help;
-import commands.Show;
+import commands.*;
 import managers.AllManagers;
 import managers.CollectionManager;
 import managers.CommandManager;
@@ -17,7 +14,8 @@ public class ConsoleApp {
                 new Exit(),
                 new Help(),
                 new Show(),
-                new Add()));
+                new Add(),
+                new UpdateId()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
     }

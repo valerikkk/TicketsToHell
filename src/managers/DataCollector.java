@@ -13,6 +13,11 @@ public class DataCollector {
         collectPrice(ticketData);
         return ticketData;
     }
+    public Long collectId(){
+        System.out.println("Введите id билета, который хотите заменить");
+        Long id = collectLong();
+        return id;
+    }
     public void collectName(TicketData ticketData){
         System.out.println("Введите название билета");
         String name = collectString();
@@ -31,7 +36,7 @@ public class DataCollector {
         ticketData.setPrice(price);
     }
     public String collectValue() throws NullValueException{
-        String value = scanner.next();
+        String value = scanner.nextLine();
         if(value.isEmpty()){
             throw new NullValueException();
         }
@@ -46,7 +51,16 @@ public class DataCollector {
             }
         }
     }
-    public Integer collectLong(){
+    public Long collectLong(){
+        while(true){
+            try {
+                return Long.parseLong(collectValue());
+            }catch (NullValueException ex){
+                System.out.println("Значение этого поля не может быть пустым");
+            }
+        }
+    }
+    public Integer collectInteger(){
         while(true){
             try {
                 return Integer.parseInt(collectValue());
