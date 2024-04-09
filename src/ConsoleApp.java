@@ -20,5 +20,4 @@ public class ConsoleApp {
         all.setDataCollector(new DataCollector());
         all.getConsoleManager().runFromConsole();
     }
-
 }
