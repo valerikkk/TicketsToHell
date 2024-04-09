@@ -1,8 +1,6 @@
 import commands.*;
-import managers.AllManagers;
-import managers.CollectionManager;
-import managers.CommandManager;
-import managers.ConsoleManager;
+import managers.*;
+
 import java.util.Scanner;
 
 public class ConsoleApp {
@@ -15,8 +13,10 @@ public class ConsoleApp {
                 new Help(),
                 new Show(),
                 new Add(),
-                new UpdateId()));
+                new UpdateById(),
+                new RemoveById()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
+        all.setDataCollector(new DataCollector());
         all.getConsoleManager().runFromConsole();
     }
 
