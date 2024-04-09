@@ -3,6 +3,7 @@ package managers;
 import models.Ticket;
 import models.TicketData;
 
+import java.util.NoSuchElementException;
 import java.util.Vector;
 
 public class CollectionManager {
@@ -21,22 +22,17 @@ public class CollectionManager {
         for (Ticket tick : tickets) {
             if (tick.getId() == id) {
                 return tick;
+                }
             }
-        }
         return null;
     }
     public void removeById(long id){
-        for (Ticket ticks: tickets) {
-            if (ticks.getId() == id) {
-                tickets.remove(ticks);
-            }
-            System.out.println("Билета с таким id не найдено");
-        }
+        tickets.remove(getTicketById(id));
     }
     public void updateById(long id, TicketData newTicket){
-        tickets.remove(getTicketById(id));
-        Ticket ticket = new Ticket(id, newTicket);
-        tickets.add(ticket);
+            removeById(id);
+            Ticket ticket = new Ticket(id, newTicket);
+            tickets.add(ticket);
     }
     public Vector<Ticket> getTickets(){
         return tickets;

@@ -9,10 +9,10 @@ public class Venue {
     private VenueType type; //Поле не может быть null
 
     public Venue(String name, Integer capacity, VenueType type) {
-        this.id = Math.abs(this.hashCode());
         this.name = name;
         this.capacity = capacity;
         this.type = type;
+        this.id = Math.abs(this.hashCode());
     }
     public Venue(long id, String name, Integer capacity, VenueType type) {
         this.id = id;

@@ -17,7 +17,7 @@ public class DataCollector{
         return ticketData;
     }
     public Long collectId(){
-        System.out.println("Введите id билета, который хотите заменить");
+        System.out.println("Введите id необходимого билета");
         return collectLong();
     }
     public void collectName(TicketData ticketData){

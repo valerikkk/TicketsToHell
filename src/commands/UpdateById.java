@@ -6,7 +6,7 @@ import managers.DataCollector;
 
 public class UpdateById extends Command{
     public UpdateById() {
-        super("update_id", "обновить значение элемента коллекции, id которого равен заданному");
+        super("update", "обновить значение элемента коллекции, id которого равен заданному");
     }
     @Override
     public void run() {

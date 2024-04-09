@@ -26,7 +26,7 @@ public class ConsoleManager {
                 }
             }
         }catch (NoSuchElementException e){
-            System.out.println("Ты сам захотел выйти");
+            System.out.println("А команда exit для тебя шутка?");
         }
         }
     }
