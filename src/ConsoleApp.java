@@ -14,7 +14,8 @@ public class ConsoleApp {
                 new Show(),
                 new Add(),
                 new UpdateById(),
-                new RemoveById()));
+                new RemoveById(),
+                new Clear()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.setDataCollector(new DataCollector());
         all.getConsoleManager().runFromConsole();

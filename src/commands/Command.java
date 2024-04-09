@@ -1,8 +1,8 @@
 package commands;
 
 public abstract class Command{
-    private String nameInConsole;
-    private String description;
+    private final String nameInConsole;
+    private final String description;
     public Command(String nameInConsole, String description) {
         this.nameInConsole = nameInConsole;
         this.description = description;
