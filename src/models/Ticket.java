@@ -3,7 +3,7 @@ package models;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class Ticket implements Comparable<Ticket> {
+public class Ticket implements Comparable<Ticket>{
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -12,14 +12,14 @@ public class Ticket implements Comparable<Ticket> {
     private TicketType type; //Поле не может быть null
     private Venue venue; //Поле не может быть null
 
-    public Ticket(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, float price, TicketType type, Venue venue) {
+    public Ticket(Long id, TicketData ticketData){
         this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.creationDate = creationDate;
-        this.price = price;
-        this.type = type;
-        this.venue = venue;
+        this.name = ticketData.getName();
+        this.coordinates = ticketData.getCoordinates();
+        this.creationDate = ticketData.getCreationDate();
+        this.price = ticketData.getPrice();
+        this.type = ticketData.getType();
+        this.venue = ticketData.getVenue();
     }
 
     public ZonedDateTime getCreationDate() {
@@ -82,9 +82,9 @@ public class Ticket implements Comparable<Ticket> {
             return compareByName;
         }
         int compareById = this.id.compareTo(tick.getId());
-            if (compareById != 0) {
-                return compareById;
-            }
-    return this.type.compareTo(tick.getType());
+        if (compareById != 0) {
+            return compareById;
+        }
+        return this.type.compareTo(tick.getType());
     }
 }

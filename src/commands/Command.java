@@ -1,19 +1,16 @@
 package commands;
 
-import managers.TicketsDatabase;
-
-public abstract class Command {
-    private String consoleName;
+public abstract class Command{
+    private String nameInConsole;
     private String description;
-    private TicketsDatabase ticketsDatabase;
-    public Command(String consoleName, String description){
-        this.consoleName = consoleName;
+    public Command(String nameInConsole, String description) {
+        this.nameInConsole = nameInConsole;
         this.description = description;
     }
-    public String getConsoleName() {
-        return consoleName;
+    public abstract void run();
+    public String getNameInConsole() {
+        return nameInConsole;
     }
-
     public String getDescription() {
         return description;
     }
