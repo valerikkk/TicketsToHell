@@ -5,6 +5,7 @@ import exceptions.NoSuchCommandException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class CommandManager {
     public CommandManager(Command... command){
@@ -14,7 +15,7 @@ public class CommandManager {
     }
     Map<String, Command> commands = new HashMap<>();
     public void callCommand(String nameCommand) throws NoSuchCommandException{
-        try {
+        try{
             commands.get(nameCommand).run();
         }catch(NullPointerException ex){
             throw new NoSuchCommandException();

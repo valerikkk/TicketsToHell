@@ -49,7 +49,7 @@ public class DataCollector{
         int capacity = collectInteger();
         System.out.println("Введите тип площадки");
         VenueType venueType = collectVenueType();
-        ticketData.setVenue(new Venue(Math.abs(this.hashCode()), name,capacity,venueType));
+        ticketData.setVenue(new Venue(name,capacity,venueType));
     }
     public String collectValue() throws NullValueException{
         String value = scanner.nextLine();
@@ -136,7 +136,7 @@ public class DataCollector{
                 System.out.println("Введите одно из предложенных значений");
                 EnumSet<VenueType> venueTypes = EnumSet.allOf(VenueType.class);
                 for (VenueType venueType:venueTypes) {
-                    System.out.println(venueTypes);
+                    System.out.println(venueType);
                 }
             }
         }

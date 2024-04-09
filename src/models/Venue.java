@@ -8,6 +8,12 @@ public class Venue {
     private Integer capacity; //Поле может быть null, Значение поля должно быть больше 0
     private VenueType type; //Поле не может быть null
 
+    public Venue(String name, Integer capacity, VenueType type) {
+        this.id = Math.abs(this.hashCode());
+        this.name = name;
+        this.capacity = capacity;
+        this.type = type;
+    }
     public Venue(long id, String name, Integer capacity, VenueType type) {
         this.id = id;
         this.name = name;
@@ -55,6 +61,6 @@ public class Venue {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, capacity, type);
+        return Objects.hash(name, capacity, type);
     }
 }

@@ -2,6 +2,7 @@ package managers;
 
 import exceptions.NoSuchCommandException;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleManager {
@@ -13,16 +14,20 @@ public class ConsoleManager {
     }
     public void runFromConsole(){
         String income;
-        while (true) {
-            income = scanner.nextLine().trim().toLowerCase();
-            try {
-                cmd.callCommand(income);
-            }catch(NoSuchCommandException ex){
-                System.out.println("Команда с таким названием не найдена");
-            }catch(IllegalArgumentException ex){
-                System.out.println("Введите один из предложенных вариантов");
+        try {
+            while (true) {
+                income = scanner.nextLine().trim().toLowerCase();
+                try {
+                    cmd.callCommand(income);
+                }catch(NoSuchCommandException ex){
+                    System.out.println("Команда с таким названием не найдена");
+                }catch(IllegalArgumentException ex){
+                    System.out.println("Введите один из предложенных вариантов");
+                }
             }
+        }catch (NoSuchElementException e){
+            System.out.println("Ты сам захотел выйти");
+        }
         }
     }
 
-}
