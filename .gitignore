@@ -3,8 +3,11 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/
+<<<<<<< HEAD
 lab5.iml
 
+=======
+>>>>>>> a597dc2c10769a82d9e50ade21d408d527f96dac
 
 ### Eclipse ###
 .apt_generated
