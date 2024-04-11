@@ -12,5 +12,6 @@ public class RemoveLast extends Command{
     public void run() {
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();
         collectionManager.removeById(collectionManager.getLastId());
+        collectionManager.setLastId(collectionManager.getLastId()-1);
     }
 }

@@ -28,10 +28,15 @@ public class CollectionManager {
         return null;
     }
     public void removeById(long id){
+        try {
             tickets.remove(getTicketById(id));
+        }catch (IndexOutOfBoundsException ex){
+            System.out.println("Введите значение long >=0");
+        }
     }
     public void updateById(long id, TicketData newTicket){
-            tickets.remove(getTicketById(id));
+            Ticket tick = getTicketById(id);
+            tickets.remove(tick);
             Ticket ticket = new Ticket(id, newTicket);
             tickets.add(ticket);
     }
@@ -44,5 +49,9 @@ public class CollectionManager {
     }
     public long getLastId() {
         return lastId;
+    }
+
+    public void setLastId(long lastId) {
+        this.lastId = lastId;
     }
 }

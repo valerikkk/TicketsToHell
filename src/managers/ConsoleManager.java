@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ConsoleManager {
     private Scanner scanner;
     private CommandManager cmd;
+    String[] tokens;
     public ConsoleManager(Scanner scanner, CommandManager cmd){
         this.scanner = scanner;
         this.cmd = cmd;
@@ -16,8 +17,9 @@ public class ConsoleManager {
         try {
             while (true) {
                 income = scanner.nextLine().trim().toLowerCase();
+                tokens = income.split(" ");
                 try {
-                    cmd.callCommand(income);
+                    cmd.callCommand(tokens[0]);
                 }catch(NoSuchCommandException ex){
                     System.out.println("Команда с таким названием не найдена");
                 }
@@ -26,5 +28,8 @@ public class ConsoleManager {
             System.out.println("А команда exit для тебя шутка?");
         }
         }
+    public String[] getTokens() {
+        return tokens;
     }
+}
 

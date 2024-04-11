@@ -16,10 +16,6 @@ public class DataCollector{
         collectVenue(ticketData);
         return ticketData;
     }
-    public Long collectId(){
-        System.out.println("Введите id необходимого билета");
-        return collectLong();
-    }
     public void collectName(TicketData ticketData){
         System.out.println("Введите название билета");
         String name = collectString();
@@ -86,11 +82,16 @@ public class DataCollector{
     public Integer collectInteger(){
         while(true){
             try {
-                return Integer.parseInt(collectValue());
+                int capacity = Integer.parseInt(collectValue());
+                if(capacity<=0){
+                    System.out.println("значение должно быть >=0");
+                    continue;
+                }
+                return capacity;
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
             }catch(IllegalArgumentException ex){
-                System.out.println("Введите тип int");
+                System.out.println("Введите тип int, ");
             }
         }
     }
@@ -108,11 +109,16 @@ public class DataCollector{
     public Float collectFloat(){
         while(true){
             try {
-                return Float.parseFloat(collectValue());
+                float price = Float.parseFloat(collectValue());
+                if(price<=0){
+                    System.out.println("Значение этого поля должно быть >= 0");
+                    continue;
+                }
+                return price;
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
             }catch(IllegalArgumentException ex){
-                System.out.println("Введите тип float");
+                System.out.println("Введите тип float, значение больше или равно 0");
             }
         }
     }
@@ -145,5 +151,17 @@ public class DataCollector{
                 }
             }
         }
+    }
+        public long getIdFromTokens(String[] tokens){
+        long id = 0;
+        ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
+        try{
+            id = Long.parseLong(consoleManager.getTokens()[1]);
+        }catch(NumberFormatException ex){
+            System.out.println("ID должно быть long");
+        }catch (IndexOutOfBoundsException r){
+            System.out.println("Напишите хотя бы id");
+        }
+        return id;
     }
 }
