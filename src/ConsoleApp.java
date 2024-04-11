@@ -20,7 +20,8 @@ public class ConsoleApp {
                 new UpdateById(),
                 new RemoveLast(),
                 new RemoveById(),
-                new Clear()));
+                new Clear(),
+                new CountType()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
     }

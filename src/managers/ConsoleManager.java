@@ -23,13 +23,15 @@ public class ConsoleManager {
                 tokens = income.split(" ");
                 try {
                     if (cmd.getCommands().get(tokens[0]).isComposite().equalsIgnoreCase("NO")) {
-                        if (!tokens[1].isEmpty()){
+                        if (!tokens[tokens.length-1].isEmpty() && tokens.length>1){
                             throw new NoSuchCommandException();
                         }
                     }
                     cmd.callCommand(tokens[0]);
                 } catch (NoSuchCommandException ex) {
                     System.out.println("Команда с таким названием не найдена");
+                }catch (NullPointerException ex){
+                    System.out.println("Команда с таким названием is invalid");
                 }
             }
         } catch (NoSuchElementException e) {
