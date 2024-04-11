@@ -1,7 +1,6 @@
 import commands.*;
 import managers.*;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleApp {
@@ -9,16 +8,20 @@ public class ConsoleApp {
         AllManagers all = AllManagers.createAllManagers();
         all.setCollectionManager(new CollectionManager());
         all.setScanner(new Scanner(System.in));
+        CSVparser pars = new CSVparser();
+        Setter setter = new Setter();
+        setter.set(pars.parse("BIMBAM.csv"));
         all.setCommandManager(new CommandManager(
                 new Exit(),
                 new Help(),
                 new Show(),
                 new Add(),
+                new Info(),
                 new UpdateById(),
+                new RemoveLast(),
                 new RemoveById(),
                 new Clear()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
-        all.setDataCollector(new DataCollector());
         all.getConsoleManager().runFromConsole();
     }
 }

@@ -1,11 +1,14 @@
 package models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 
 public class TicketData {
     private String name;
     private Coordinates coordinates;
-    private java.time.ZonedDateTime creationDate;
+    private java.time.LocalDateTime creationDate;
     private float price;
     private TicketType type;
     private Venue venue;
@@ -14,7 +17,7 @@ public class TicketData {
         return coordinates;
     }
 
-    public ZonedDateTime getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
@@ -35,26 +38,54 @@ public class TicketData {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name == null || name.isEmpty()){
+            throw new RuntimeException();
+        }
+        else {
+            this.name = name;
+        }
     }
-
     public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+        if (coordinates == null){
+            throw new RuntimeException();
+        }
+        else{
+            this.coordinates = coordinates;
+        }
     }
 
-    public void setCreationDate(ZonedDateTime creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDate() {
+        this.creationDate = LocalDateTime.now();
     }
 
     public void setPrice(float price) {
-        this.price = price;
+        if (price <= 0.0){
+            throw new RuntimeException();
+        }
+        else {
+            this.price = price;
+        }
     }
 
     public void setType(TicketType type) {
-        this.type = type;
+        if (type == null){
+            throw new RuntimeException();
+        }
+        else {
+            this.type = type;
+        }
     }
 
     public void setVenue(Venue venue) {
-        this.venue = venue;
+        if (venue == null){
+            throw new RuntimeException();
+        }
+        else {
+            this.venue = venue;
+        }
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, coordinates, creationDate, price, type);
     }
 }

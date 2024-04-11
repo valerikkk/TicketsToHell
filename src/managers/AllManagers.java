@@ -8,7 +8,6 @@ public class AllManagers {
     CollectionManager collectionManager;
     Scanner scanner;
     ConsoleManager consoleManager;
-    DataCollector dataCollector;
     AllManagers(){
     }
     public static AllManagers createAllManagers(){
@@ -43,11 +42,5 @@ public class AllManagers {
     }
     public static AllManagers getManagers() {
         return managers;
-    }
-    public void setDataCollector(DataCollector dataCollector) {
-        this.dataCollector = dataCollector;
-    }
-    public DataCollector getDataCollector() {
-        return dataCollector;
     }
 }

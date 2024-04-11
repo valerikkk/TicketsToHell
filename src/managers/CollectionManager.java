@@ -16,21 +16,22 @@ public class CollectionManager {
         tickets.add(ticket);
     }
     public long getNewId(){
-        return lastId++;
+        return ++lastId;
     }
-    public Ticket getTicketById(long id) {
+    public Ticket getTicketById(long id){
         for (Ticket tick : tickets) {
             if (tick.getId() == id) {
                 return tick;
                 }
             }
+        System.out.println("Элемента с таким id не обнаружено");
         return null;
     }
     public void removeById(long id){
-        tickets.remove(getTicketById(id));
+            tickets.remove(getTicketById(id));
     }
     public void updateById(long id, TicketData newTicket){
-            removeById(id);
+            tickets.remove(getTicketById(id));
             Ticket ticket = new Ticket(id, newTicket);
             tickets.add(ticket);
     }
@@ -40,5 +41,8 @@ public class CollectionManager {
     public void setCollection(Vector<Ticket> newColl){
         this.tickets = newColl;
         lastId = getNewId();
+    }
+    public long getLastId() {
+        return lastId;
     }
 }

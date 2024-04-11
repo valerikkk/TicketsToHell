@@ -11,7 +11,7 @@ public class UpdateById extends Command{
     @Override
     public void run() {
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();
-        DataCollector dataCollector = AllManagers.getManagers().getDataCollector();
+        DataCollector dataCollector = new DataCollector();
         collectionManager.updateById(dataCollector.collectId(), dataCollector.wrap());
     }
 }

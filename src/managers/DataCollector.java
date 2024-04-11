@@ -34,7 +34,7 @@ public class DataCollector{
     }
     public void collectPrice(TicketData ticketData){
         System.out.println("Введите цену билета");
-        float price = collectFloat();
+        float price=collectFloat();
         ticketData.setPrice(price);
     }
     public void collectTicketType(TicketData ticketData){
@@ -43,15 +43,20 @@ public class DataCollector{
         ticketData.setType(type);
     }
     public void collectVenue(TicketData ticketData){
+        Venue venue = new Venue();
         System.out.println("Введите место проведения мероприятия");
         String name = collectString();
+        venue.setName(name);
         System.out.println("Введите вместимость площадки");
         int capacity = collectInteger();
+        venue.setCapacity(capacity);
         System.out.println("Введите тип площадки");
         VenueType venueType = collectVenueType();
-        ticketData.setVenue(new Venue(name,capacity,venueType));
+        venue.setType(venueType);
+        venue.setId(Math.abs((long)venue.hashCode()));
+        ticketData.setVenue(venue);
     }
-    public String collectValue() throws NullValueException{
+    public String collectValue() throws NullValueException, IllegalArgumentException{
         String value = scanner.nextLine();
         if(value.isEmpty()){
             throw new NullValueException();
