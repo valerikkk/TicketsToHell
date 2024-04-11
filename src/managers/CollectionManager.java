@@ -4,6 +4,7 @@ import models.Ticket;
 import models.TicketData;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Vector;
 
 public class CollectionManager {
@@ -34,10 +35,20 @@ public class CollectionManager {
             System.out.println("Введите значение long >=0");
         }
     }
-    public void updateById(long id, TicketData newTicket){
-            Ticket tick = getTicketById(id);
-            tickets.remove(tick);
-            Ticket ticket = new Ticket(id, newTicket);
+    public void updateById(long id){
+        DataCollector dataCollector = new DataCollector();
+        try {
+            Ticket t = getTicketById(id);
+            if (t!=null) {
+                tickets.remove(t);
+            }
+            else {
+                return;
+            }
+        }catch (IndexOutOfBoundsException ex){
+            System.out.println("Введите значение long >=0");return;
+        }
+            Ticket ticket = new Ticket(id, dataCollector.wrap());
             tickets.add(ticket);
     }
     public Vector<Ticket> getTickets(){

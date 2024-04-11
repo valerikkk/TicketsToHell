@@ -17,9 +17,7 @@ public class UpdateById extends Command{
         DataCollector dataCollector = new DataCollector();
         ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
         try{
-            collectionManager.removeById(Long.parseLong(consoleManager.getTokens()[1]));
-            collectionManager.addTicket(dataCollector.wrap());
-//            collectionManager.updateById(Long.parseLong(consoleManager.getTokens()[1]), dataCollector.wrap());
+            collectionManager.updateById(Long.parseLong(consoleManager.getTokens()[1]));
         }catch (NumberFormatException ex){
             System.out.println("ID должен быть long и >=0");
         }catch (ArrayIndexOutOfBoundsException ex){
