@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 public class UpdateById extends Command{
     public UpdateById() {
-        super("update", "обновить значение элемента коллекции, id которого равен заданному");
+        super("update", "обновить значение элемента коллекции, id которого равен заданному","YES");
     }
     @Override
     public void run() {

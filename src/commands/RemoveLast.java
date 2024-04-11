@@ -5,7 +5,7 @@ import managers.CollectionManager;
 
 public class RemoveLast extends Command{
     public RemoveLast() {
-        super("remove_last", "удалить последний добавленный элемент из коллекции");
+        super("remove_last", "удалить последний добавленный элемент из коллекции", "NO");
     }
 
     @Override

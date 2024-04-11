@@ -41,7 +41,6 @@ public class Setter {
         }
         venue.setId(Math.abs((long)venue.hashCode()));
         ticketData.setCreationDate();
-//        Ticket ticket = new Ticket(Math.abs((long)ticketData.hashCode()), ticketData);
         ticketData.setVenue(venue);
         CollectionManager coll = AllManagers.createAllManagers().getCollectionManager();
         coll.addTicket(ticketData);

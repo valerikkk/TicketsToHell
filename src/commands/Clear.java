@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public class Clear extends Command{
     public Clear(){
-        super("clear", "очистить коллекцию");
+        super("clear", "очистить коллекцию", "NO");
     }
     @Override
     public void run(){

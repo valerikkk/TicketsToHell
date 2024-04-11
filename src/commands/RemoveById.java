@@ -7,7 +7,7 @@ import managers.DataCollector;
 
 public class RemoveById extends Command{
     public RemoveById() {
-        super("remove_by", "удалить элемент из коллекции по его id");
+        super("remove_by", "удалить элемент из коллекции по его id", "YES");
     }
     @Override
     public void run() {
