@@ -1,11 +1,12 @@
 package models;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+
 
 public class TicketData {
     private String name;
     private Coordinates coordinates;
-    private java.time.ZonedDateTime creationDate;
+    private java.time.LocalDateTime creationDate;
     private float price;
     private TicketType type;
     private Venue venue;
@@ -14,7 +15,7 @@ public class TicketData {
         return coordinates;
     }
 
-    public ZonedDateTime getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
@@ -42,8 +43,8 @@ public class TicketData {
         this.coordinates = coordinates;
     }
 
-    public void setCreationDate(ZonedDateTime creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDate() {
+        this.creationDate = LocalDateTime.now();
     }
 
     public void setPrice(float price) {

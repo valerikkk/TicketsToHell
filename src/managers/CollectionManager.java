@@ -15,6 +15,11 @@ public class CollectionManager {
         Ticket ticket = new Ticket(getNewId(), ticketData);
         tickets.add(ticket);
     }
+    public void addTicket(Ticket ticket) {
+        ticket.setId(getNewId());
+        tickets.add(ticket);
+    }
+
     public long getNewId(){
         return lastId++;
     }
@@ -40,5 +45,14 @@ public class CollectionManager {
     public void setCollection(Vector<Ticket> newColl){
         this.tickets = newColl;
         lastId = getNewId();
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (Ticket tic:tickets){
+            s += tic.fileToString() + "\n";
+        }
+        return s;
     }
 }
