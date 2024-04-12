@@ -9,7 +9,7 @@ public class ConsoleApp {
         all.setScanner(new Scanner(System.in));
         CSVparser pars = new CSVparser();
         Setter setter = new Setter();
-        setter.set(pars.parse("BIMBAM.csv"));
+        setter.set(pars.parse("notes.csv"));
         all.setCommandManager(new CommandManager(
                 new Exit(),
                 new Help(),
