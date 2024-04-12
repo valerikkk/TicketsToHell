@@ -2,12 +2,14 @@ import java.io.FileInputStream;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 public class CSVparser {
 
     public CSVparser() {
     }
-    public String[] parse(String path) {
-        String[] result = new String[0];
+    public ArrayList<String> parse(String path) {
+        ArrayList<String> result = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream(path);
             InputStreamReader input = new InputStreamReader(file);
