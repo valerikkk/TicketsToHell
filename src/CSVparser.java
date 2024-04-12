@@ -3,6 +3,11 @@ import java.io.FileInputStream;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 public class CSVparser {
 
     public CSVparser() {
@@ -24,3 +29,7 @@ public class CSVparser {
         return result;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce

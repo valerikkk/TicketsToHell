@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class CommandManager {
+    Map<String, Command> commands = new HashMap<>();
     public CommandManager(Command... command){
         for(Command comms: command){
             commands.put(comms.getNameInConsole(), comms);
         }
     }
-    Map<String, Command> commands = new HashMap<>();
     public void callCommand(String nameCommand) throws NoSuchCommandException{
         try{
             commands.get(nameCommand).run();

@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Show extends Command{
     public Show(){
-        super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении");
+        super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", "NO");
     }
     @Override
     public void run(){

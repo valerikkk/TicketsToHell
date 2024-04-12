@@ -4,6 +4,7 @@ import models.Ticket;
 import models.TicketData;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Vector;
 
 public class CollectionManager {
@@ -15,28 +16,47 @@ public class CollectionManager {
         Ticket ticket = new Ticket(getNewId(), ticketData);
         tickets.add(ticket);
     }
+<<<<<<< HEAD
     public void addTicket(Ticket ticket) {
         ticket.setId(getNewId());
         tickets.add(ticket);
     }
+=======
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 
     public long getNewId(){
-        return lastId++;
+        return ++lastId;
     }
-    public Ticket getTicketById(long id) {
+    public Ticket getTicketById(long id){
         for (Ticket tick : tickets) {
             if (tick.getId() == id) {
                 return tick;
                 }
             }
+        System.out.println("Элемента с таким id не обнаружено");
         return null;
     }
     public void removeById(long id){
-        tickets.remove(getTicketById(id));
+        try {
+            tickets.remove(getTicketById(id));
+        }catch (IndexOutOfBoundsException ex){
+            System.out.println("Введите значение long >=0");
+        }
     }
-    public void updateById(long id, TicketData newTicket){
-            removeById(id);
-            Ticket ticket = new Ticket(id, newTicket);
+    public void updateById(long id){
+        DataCollector dataCollector = new DataCollector();
+        try {
+            Ticket t = getTicketById(id);
+            if (t!=null) {
+                tickets.remove(t);
+            }
+            else {
+                return;
+            }
+        }catch (IndexOutOfBoundsException ex){
+            System.out.println("Введите значение long >=0");return;
+        }
+            Ticket ticket = new Ticket(id, dataCollector.wrap());
             tickets.add(ticket);
     }
     public Vector<Ticket> getTickets(){
@@ -46,6 +66,7 @@ public class CollectionManager {
         this.tickets = newColl;
         lastId = getNewId();
     }
+<<<<<<< HEAD
 
     @Override
     public String toString() {
@@ -54,5 +75,13 @@ public class CollectionManager {
             s += tic.fileToString() + "\n";
         }
         return s;
+=======
+    public long getLastId() {
+        return lastId;
+    }
+
+    public void setLastId(long lastId) {
+        this.lastId = lastId;
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     }
 }

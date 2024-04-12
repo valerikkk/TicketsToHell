@@ -7,7 +7,7 @@ import java.util.Map;
 public class Help extends Command {
 
     public Help() {
-        super("help", "вывести справку по доступным командам");
+        super("help", "вывести справку по доступным командам", "NO");
     }
     @Override
     public void run() {

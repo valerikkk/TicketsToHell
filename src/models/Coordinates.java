@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 package models;
 
 public class Coordinates {
@@ -36,7 +40,6 @@ public class Coordinates {
             this.x = x;
         }
     }
-
     public void setY(Float y) {
         if (y == null) {
             throw new RuntimeException();
@@ -45,3 +48,7 @@ public class Coordinates {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce

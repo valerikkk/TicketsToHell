@@ -7,7 +7,7 @@ import models.TicketData;
 
 public class Add extends Command{
     public Add() {
-        super("add", "добавить новый элемент в коллекцию");
+        super("add", "добавить новый элемент в коллекцию", "NO");
     }
     @Override
     public void run() {

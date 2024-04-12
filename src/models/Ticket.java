@@ -1,11 +1,13 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 package models;
-
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
+import java.util.Objects;
 
+<<<<<<< HEAD
 public class Ticket {
     private long id;
     private String name;
@@ -29,12 +31,25 @@ public class Ticket {
 
     public Ticket(long id, TicketData ticketData) {
         this.id = id;
+=======
+public class Ticket implements Comparable<Ticket>{
+    private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private String name; //Поле не может быть null, Строка не может быть пустой
+    private Coordinates coordinates; //Поле не может быть null
+    private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private float price; //Значение поля должно быть больше 0
+    private TicketType type; //Поле не может быть null
+    private Venue venue; //Поле не может быть null
+    public Ticket(Long id, TicketData ticketData){
+        this.id = id;
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
         this.name = ticketData.getName();
         this.coordinates = ticketData.getCoordinates();
         this.creationDate = ticketData.getCreationDate();
         this.price = ticketData.getPrice();
         this.type = ticketData.getType();
         this.venue = ticketData.getVenue();
+<<<<<<< HEAD
     }
 
     public Long getId() {
@@ -47,76 +62,43 @@ public class Ticket {
 
     public Coordinates getCoordinates() {
         return coordinates;
+=======
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     }
 
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+<<<<<<< HEAD
     public float getPrice() {
         return price;
     }
 
+=======
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     public TicketType getType() {
         return type;
     }
 
-
-
     public Venue getVenue() {
         return venue;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    public void setName(String name) {
-        if (name == null || name.isEmpty()){
-            throw new RuntimeException();
-        }
-        else {
-            this.name = name;
-        }
+    public float getPrice() {
+        return price;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        if (coordinates == null){
-            throw new RuntimeException();
-        }
-        else{
-            this.coordinates = coordinates;
-        }
+    public String getName() {
+        return name;
     }
 
-    public void setCreationDate() {
-        this.creationDate = LocalDateTime.now();
-    }
-
-    public void setPrice(Float price) {
-        if (price == null || price == 0){
-            throw new RuntimeException();
-        }
-        else {
-            this.price = price;
-        }
-    }
-
-    public void setType(TicketType type) {
-        if (type == null){
-            throw new RuntimeException();
-        }
-        else {
-            this.type = type;
-        }
-    }
-
-    public void setVenue(Venue venue) {
-        if (venue == null){
-            throw new RuntimeException();
-        }
-        else {
-            this.venue = venue;
-        }
+    public Long getId() {
+        return id;
     }
 
     @Override
@@ -124,14 +106,40 @@ public class Ticket {
         return "Ticket{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", coordinates=" + coordinates.toString() +
+                ", coordinates=" + coordinates +
                 ", creationDate=" + creationDate +
                 ", price=" + price +
                 ", type=" + type +
-                ", venue=" + venue.toString() +
+                ", venue=" + venue +
                 '}';
     }
-    public String fileToString(){
-       return name + "," + coordinates.fileToString() + "," + creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss")) + "," + price + "," + type + "," + venue.fileToString();
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Ticket ticket = (Ticket) object;
+        return Float.compare(price, ticket.price) == 0 && Objects.equals(id, ticket.id) && Objects.equals(name, ticket.name) && Objects.equals(coordinates, ticket.coordinates) && Objects.equals(creationDate, ticket.creationDate) && type == ticket.type && Objects.equals(venue, ticket.venue);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, coordinates, creationDate, price, type, venue);
+    }
+    @Override
+    public int compareTo(Ticket tick) {
+        int compareById = this.id.compareTo(tick.getId());
+        if (compareById != 0) {
+            return compareById;
+        }
+        return this.type.compareTo(tick.getType());
+    }
+    public String fileToString(){
+        return name + "," + coordinates.fileToString() + "," + creationDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss")) + "," + price + "," + type + "," + venue.fileToString();
+    }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
