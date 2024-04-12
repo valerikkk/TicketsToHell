@@ -1,14 +1,8 @@
 package models;
 
-<<<<<<< HEAD
 import java.time.LocalDateTime;
 
-=======
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.Objects;
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 
 public class TicketData {
     private String name;

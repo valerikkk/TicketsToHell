@@ -1,13 +1,8 @@
 
 package models;
-
-<<<<<<< HEAD
-public class Venue {
-=======
 import java.util.Objects;
+public class Venue {
 
-public class Venue implements Comparable<Venue>{
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     private Long id;
     private String name;
     private Integer capacity;
@@ -69,20 +64,14 @@ public class Venue implements Comparable<Venue>{
     }
     public String fileToString(){
         return name + "," + capacity + "," + type;
-<<<<<<< HEAD
-=======
+
     }
     @Override
     public int hashCode() {
         return Objects.hash(name, capacity, type);
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     }
-    @Override
+
     public int compareTo(Venue v) {
             return this.capacity.compareTo(v.getCapacity());
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce

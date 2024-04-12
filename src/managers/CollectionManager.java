@@ -3,8 +3,7 @@ package managers;
 import models.Ticket;
 import models.TicketData;
 
-import java.util.NoSuchElementException;
-import java.util.Objects;
+
 import java.util.Vector;
 
 public class CollectionManager {
@@ -16,13 +15,10 @@ public class CollectionManager {
         Ticket ticket = new Ticket(getNewId(), ticketData);
         tickets.add(ticket);
     }
-<<<<<<< HEAD
-    public void addTicket(Ticket ticket) {
+    public void addTicketTwo(Ticket ticket) {
         ticket.setId(getNewId());
         tickets.add(ticket);
     }
-=======
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 
     public long getNewId(){
         return ++lastId;
@@ -66,22 +62,19 @@ public class CollectionManager {
         this.tickets = newColl;
         lastId = getNewId();
     }
-<<<<<<< HEAD
-
     @Override
     public String toString() {
         String s = "";
-        for (Ticket tic:tickets){
+        for (Ticket tic : tickets) {
             s += tic.fileToString() + "\n";
         }
         return s;
-=======
+    }
     public long getLastId() {
         return lastId;
     }
 
     public void setLastId(long lastId) {
         this.lastId = lastId;
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
     }
 }

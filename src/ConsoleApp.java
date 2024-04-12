@@ -1,10 +1,5 @@
 import commands.*;
 import managers.*;
-
-<<<<<<< HEAD
-import java.util.Arrays;
-=======
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 import java.util.Scanner;
 
 public class ConsoleApp {
@@ -14,13 +9,7 @@ public class ConsoleApp {
         all.setScanner(new Scanner(System.in));
         CSVparser pars = new CSVparser();
         Setter setter = new Setter();
-<<<<<<< HEAD
-        FileWriter fr = new FileWriter();
         setter.set(pars.parse("BIMBAM.csv"));
-        fr.write(all.getCollectionManager());
-=======
-        setter.set(pars.parse("BIMBAM.csv"));
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
         all.setCommandManager(new CommandManager(
                 new Exit(),
                 new Help(),
@@ -33,7 +22,10 @@ public class ConsoleApp {
                 new Clear(),
                 new CountType(),
                 new FilterType(),
-                new MaxByVenue()));
+                new MaxByVenue(),
+                new ExecuteScript(),
+                new Save()));
+
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
     }

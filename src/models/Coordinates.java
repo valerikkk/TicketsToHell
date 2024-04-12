@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
 package models;
 
 public class Coordinates {
@@ -48,7 +45,3 @@ public class Coordinates {
         }
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 276196415cd5ac7b25a370ab24f1ae6c439c73ce
