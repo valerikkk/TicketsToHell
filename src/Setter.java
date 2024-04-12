@@ -2,8 +2,6 @@ import managers.AllManagers;
 import managers.CollectionManager;
 import models.*;
 
-import java.util.Arrays;
-
 public class Setter {
     public void set(String[] arrOfContents) {
         CollectionManager coll = AllManagers.createAllManagers().getCollectionManager();

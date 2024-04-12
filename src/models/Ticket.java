@@ -3,16 +3,6 @@ package models;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-
-//public class Ticket {
-//    private long id;
-//    private String name;
-//    private Coordinates coordinates;
-//    private java.time.LocalDateTime creationDate;
-//    private float price;
-//    private TicketType type;
-//    private Venue venue;
-
     public class Ticket implements Comparable<Ticket> {
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -23,18 +13,6 @@ import java.util.Objects;
     private Venue venue; //Поле не может быть null
          public Ticket() {
         }
-        public Ticket(long id, String name, Coordinates coordinates, LocalDateTime creationDate, float price, TicketType type, Venue venue) {
-            this.id = id;
-            this.name = name;
-            this.coordinates = coordinates;
-            this.creationDate = creationDate;
-            this.price = price;
-            this.type = type;
-            this.venue = venue;
-        }
-
-        public Ticket(long id, TicketData ticketData) {
-            this.id = id;}
     public Ticket(Long id, TicketData ticketData) {
         this.id = id;
         this.name = ticketData.getName();
@@ -57,10 +35,6 @@ import java.util.Objects;
         return coordinates;
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
     public float getPrice() {
         return price;
     }
@@ -72,24 +46,6 @@ import java.util.Objects;
     public Venue getVenue() {
         return venue;
     }
-
-//    public Coordinates getCoordinates() {
-//        return coordinates;
-//    }
-//
-//    public float getPrice() {
-//        return price;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-
-
         public void setId(Long id) {
             this.id = id;
         }

@@ -17,7 +17,7 @@ public class TicketData {
     }
 
     public LocalDateTime getCreationDate() {
-        return creationDate;
+        return LocalDateTime.now();
     }
 
     public float getPrice() {
