@@ -16,6 +16,7 @@ public class CollectionManager {
         Ticket ticket = new Ticket(getNewId(), ticketData);
         tickets.add(ticket);
     }
+
     public long getNewId(){
         return ++lastId;
     }

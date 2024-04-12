@@ -22,7 +22,8 @@ public class ConsoleApp {
                 new RemoveById(),
                 new Clear(),
                 new CountType(),
-                new FilterType()));
+                new FilterType(),
+                new MaxByVenue()));
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
     }

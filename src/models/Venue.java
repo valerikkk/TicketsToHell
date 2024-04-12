@@ -3,7 +3,7 @@ package models;
 
 import java.util.Objects;
 
-public class Venue {
+public class Venue implements Comparable<Venue>{
     private Long id;
     private String name;
     private Integer capacity;
@@ -69,6 +69,10 @@ public class Venue {
     @Override
     public int hashCode() {
         return Objects.hash(name, capacity, type);
+    }
+    @Override
+    public int compareTo(Venue v) {
+            return this.capacity.compareTo(v.getCapacity());
     }
 }
 
