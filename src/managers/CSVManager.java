@@ -1,42 +1,38 @@
 package managers;
 
 import models.*;
+
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-public class CSVManager  {
-    public CSVManager(){}
-//    @Override
-//    public Vector<TicketsDatabase> read(String filename) {
-//        TicketsDatabase tickets;
-//        File file = new File(filename);
-//        try{
-//            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8);
-//            byte[] bytes = new byte[1024];
-//            System.out.println("Содержимое файла: " + new String(bytes) );
-//        }catch(FileNotFoundException es){
-//            System.out.println("ecex");
-//        }
-//    }
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
-//    public Ticket ticketParse(String[] data){
-//        Long id = Long.parseLong(data[0]); //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-//        String name = data[1]; //Поле не может быть null, Строка не может быть пустой
-//        Coordinates coordinates = new Coordinates(Double.parseDouble(data[2]), Float.parseFloat(data[3])); //Поле не может быть null
-//        java.time.ZonedDateTime creationDate = ZonedDateTime.parse(data[4]); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-//        float price = Float.parseFloat(data[5]); //Значение поля должно быть больше 0
-//        TicketType type = TicketType.valueOf(data[6]); //Поле не может быть null
-//        Venue venue = new Venue(Long.parseLong(data[7]), data[8], Integer.parseInt(data[9]), VenueType.valueOf(data[10])); //Поле не может быть null\
-//        TicketData ticketData = new TicketData();
-//        ticketData.setName(name);
-//        ticketData.setCoordinates(coordinates);
-//        ticketData.setPrice(price);
-//        ticketData.setType(type);
-//        ticketData.setCreationDate(creationDate);
-//        ticketData.setVenue(venue);
-//        return new Ticket(id, ticketData);
+public class CSVManager {
+    public CSVManager() {
     }
-
-
-//    @Override
-//    public void write() {
-//    }
-
+    CollectionManager collectionManager = AllManagers.managers.getCollectionManager();
+    public void ticketParse(String[] data) {
+        for (String cont : data) {
+            String[] tempArr = cont.split(",");
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern( "dd/MM/yyyy - HH:mm:ss" );
+            String name = tempArr[0]; //Поле не может быть null, Строка не может быть пустой
+            Coordinates coordinates = new Coordinates(Double.parseDouble(tempArr[1]), Float.parseFloat(tempArr[2])); //Поле не может быть null
+            LocalDateTime creationDate = LocalDateTime.parse(tempArr[3], dateTimeFormatter); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+            float price = Float.parseFloat(tempArr[4]); //Значение поля должно быть больше 0
+            TicketType type = TicketType.valueOf(tempArr[5]); //Поле не может быть null
+            Venue venue = new Venue(); //Поле не может быть null\
+            venue.setName(tempArr[6]);
+            venue.setCapacity(Integer.parseInt(tempArr[7]));
+            venue.setType(VenueType.valueOf(tempArr[8]));
+            venue.setId(Math.abs((long) venue.hashCode()));
+            TicketData ticketData = new TicketData();
+            ticketData.setName(name);
+            ticketData.setCoordinates(coordinates);
+            ticketData.setPrice(price);
+            ticketData.setType(type);
+            ticketData.setCreationDate(creationDate);
+            ticketData.setVenue(venue);
+            collectionManager.addTicket(ticketData);
+        }
+    }
+}

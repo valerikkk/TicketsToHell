@@ -2,6 +2,7 @@ package managers;
 import exceptions.NullValueException;
 import models.*;
 
+import java.time.LocalDateTime;
 import java.util.EnumSet;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class DataCollector{
     Scanner scanner = AllManagers.getManagers().getScanner();
     public TicketData wrap(){
         TicketData ticketData = new TicketData();
+        ticketData.setCreationDate(LocalDateTime.now());
         collectName(ticketData);
         collectCoordinates(ticketData);
         collectPrice(ticketData);
@@ -26,7 +28,7 @@ public class DataCollector{
         System.out.println("Введите координату x (double)");
         double x = collectDouble();
         System.out.println("Введите координату y (float)");
-        float y = collectFloat();
+        float y = collectAllFloat();
         ticketData.setCoordinates(new Coordinates(x, y));
     }
     public void collectPrice(TicketData ticketData){
@@ -69,17 +71,6 @@ public class DataCollector{
             }
         }
     }
-    public Long collectLong(){
-        while(true){
-            try {
-                return Long.parseLong(collectValue());
-            }catch (NullValueException ex){
-                System.out.println("Значение этого поля не может быть пустым");
-            }catch(IllegalArgumentException ex){
-                System.out.println("Введите тип long");
-            }
-        }
-    }
     public Integer collectInteger(){
         while(true){
             try {
@@ -116,6 +107,17 @@ public class DataCollector{
                     continue;
                 }
                 return price;
+            }catch(NullValueException ex){
+                System.out.println("Значение этого поля не может быть пустым");
+            }catch(IllegalArgumentException ex){
+                System.out.println("Введите тип float, значение больше или равно 0");
+            }
+        }
+    }
+    public float collectAllFloat(){
+        while(true){
+            try {
+                return Float.parseFloat(collectValue());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
             }catch(IllegalArgumentException ex){

@@ -1,5 +1,6 @@
 package models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class TicketData {
     }
 
     public LocalDateTime getCreationDate() {
-        return LocalDateTime.now();
+        return creationDate;
     }
 
     public float getPrice() {
@@ -55,6 +56,9 @@ public class TicketData {
 
     public void setCreationDate() {
         this.creationDate = LocalDateTime.now();
+    }
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public void setPrice(float price) {

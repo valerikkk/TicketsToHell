@@ -26,7 +26,7 @@ public class Coordinates {
                 '}';
     }
     public String fileToString() {
-        return x +  ";" + y;
+        return x +  "," + y;
     }
 
     public void setX(Double x) {

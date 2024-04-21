@@ -1,5 +1,4 @@
 package managers;
-
 import java.util.Scanner;
 
 public class AllManagers {
@@ -8,6 +7,8 @@ public class AllManagers {
     CollectionManager collectionManager;
     Scanner scanner;
     ConsoleManager consoleManager;
+    CSVparser csvParser;
+    FileWriter fileWriter;
     AllManagers(){
     }
     public static AllManagers createAllManagers(){
@@ -42,5 +43,21 @@ public class AllManagers {
     }
     public static AllManagers getManagers() {
         return managers;
+    }
+
+    public CSVparser getCsvParser() {
+        return csvParser;
+    }
+
+    public void setCsvParser(CSVparser csvParser) {
+        this.csvParser = csvParser;
+    }
+
+    public FileWriter getFileWriter() {
+        return fileWriter;
+    }
+
+    public void setFileWriter(FileWriter fileWriter) {
+        this.fileWriter = fileWriter;
     }
 }

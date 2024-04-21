@@ -8,8 +8,11 @@ public class ConsoleApp {
         all.setCollectionManager(new CollectionManager());
         all.setScanner(new Scanner(System.in));
         CSVparser pars = new CSVparser();
-        Setter setter = new Setter();
-        setter.set(pars.parse("notes.csv"));
+        all.setCsvParser(pars);
+        CSVManager csvManager = new CSVManager();
+        csvManager.ticketParse(pars.parse("notes.csv"));
+        FileWriter fileWriter = new FileWriter();
+        all.setFileWriter(fileWriter);
         all.setCommandManager(new CommandManager(
                 new Exit(),
                 new Help(),
