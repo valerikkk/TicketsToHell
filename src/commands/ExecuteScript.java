@@ -1,10 +1,7 @@
 package commands;
 
 import exceptions.NoSuchCommandException;
-import managers.AllManagers;
-import managers.CollectionManager;
-import managers.CommandManager;
-import managers.ConsoleManager;
+import managers.*;
 
 public class ExecuteScript extends Command {
     public ExecuteScript(){
@@ -19,6 +16,8 @@ public class ExecuteScript extends Command {
             scriptExecuter.exec((consoleManager.getTokens())[1], commandManager);
         }catch (NoSuchCommandException ex){
             System.out.println(ex.getMessage());
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Напишите путь к скрипту");
         }
     }
 }

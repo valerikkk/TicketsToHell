@@ -9,6 +9,7 @@ public class AllManagers {
     ConsoleManager consoleManager;
     CSVparser csvParser;
     FileWriter fileWriter;
+    HistoryCommand historyCommand;
     AllManagers(){
     }
     public static AllManagers createAllManagers(){
@@ -59,5 +60,13 @@ public class AllManagers {
 
     public void setFileWriter(FileWriter fileWriter) {
         this.fileWriter = fileWriter;
+    }
+
+    public HistoryCommand getHistoryCommand() {
+        return historyCommand;
+    }
+
+    public void setHistoryCommand(HistoryCommand historyCommand) {
+        this.historyCommand = historyCommand;
     }
 }

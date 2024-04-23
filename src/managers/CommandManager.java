@@ -2,12 +2,11 @@ package managers;
 
 import commands.Command;
 import exceptions.NoSuchCommandException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class CommandManager {
+    HistoryCommand historyCommand = AllManagers.getManagers().getHistoryCommand();
     Map<String, Command> commands = new HashMap<>();
     public CommandManager(Command... command){
         for(Command comms: command){
@@ -17,6 +16,10 @@ public class CommandManager {
     public void callCommand(String nameCommand) throws NoSuchCommandException{
         try{
             commands.get(nameCommand).run();
+            if(historyCommand.getHistoryCommands().size()==11){
+                historyCommand.getHistoryCommands().removeFirst();
+            }
+                historyCommand.addCommand(nameCommand);
         }catch(NullPointerException ex){
             throw new NoSuchCommandException();
         }

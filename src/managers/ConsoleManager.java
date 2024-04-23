@@ -1,7 +1,6 @@
 package managers;
 
 import exceptions.NoSuchCommandException;
-
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -29,9 +28,9 @@ public class ConsoleManager {
                     }
                     cmd.callCommand(tokens[0]);
                 } catch (NoSuchCommandException ex) {
-                    System.out.println("Команда с таким названием не найдена");
+                    ex.getMessage();
                 }catch (NullPointerException ex){
-                    System.out.println("Команда с таким названием is invalid");
+                    System.out.println("Команда с таким названием не найдена");
                 }
             }
         } catch (NoSuchElementException e) {
@@ -42,5 +41,6 @@ public class ConsoleManager {
     public String[] getTokens() {
         return tokens;
     }
+
 }
 

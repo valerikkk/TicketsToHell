@@ -12,7 +12,9 @@ public class ConsoleApp {
         CSVManager csvManager = new CSVManager();
         csvManager.ticketParse(pars.parse("notes.csv"));
         FileWriter fileWriter = new FileWriter();
+        HistoryCommand historyCommand = new HistoryCommand();
         all.setFileWriter(fileWriter);
+        all.setHistoryCommand(historyCommand);
         all.setCommandManager(new CommandManager(
                 new Exit(),
                 new Help(),
@@ -27,7 +29,9 @@ public class ConsoleApp {
                 new FilterType(),
                 new MaxByVenue(),
                 new ExecuteScript(),
-                new Save()));
+                new Save(),
+                new Reorder(),
+                new History()));
 
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
         all.getConsoleManager().runFromConsole();
