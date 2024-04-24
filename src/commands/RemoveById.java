@@ -3,7 +3,6 @@ package commands;
 import managers.AllManagers;
 import managers.CollectionManager;
 import managers.ConsoleManager;
-import managers.DataCollector;
 
 public class RemoveById extends Command{
     public RemoveById() {

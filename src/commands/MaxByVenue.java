@@ -3,9 +3,7 @@ package commands;
 import managers.AllManagers;
 import managers.CollectionManager;
 import managers.ComparatorVenue;
-import managers.ConsoleManager;
 import models.Ticket;
-
 import java.util.Vector;
 
 public class MaxByVenue extends Command{
@@ -14,7 +12,6 @@ public class MaxByVenue extends Command{
     }
     @Override
     public void run() {
-        ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();
         ComparatorVenue comparatorVenue = new ComparatorVenue();
         Vector<Ticket> tickets = collectionManager.getTickets();

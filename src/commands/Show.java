@@ -1,4 +1,5 @@
 package commands;
+
 import managers.AllManagers;
 import managers.CollectionManager;
 import models.Ticket;
@@ -10,7 +11,7 @@ public class Show extends Command{
     }
     @Override
     public void run(){
-        CollectionManager collectionManager =AllManagers.createAllManagers().getCollectionManager();
+        CollectionManager collectionManager = AllManagers.createAllManagers().getCollectionManager();
         Vector<Ticket> tickets = collectionManager.getTickets();
         for(Ticket ticks: tickets){
             System.out.println(ticks.toString());

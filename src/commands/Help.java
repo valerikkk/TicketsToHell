@@ -1,7 +1,6 @@
 package commands;
 
 import managers.AllManagers;
-
 import java.util.Map;
 
 public class Help extends Command {

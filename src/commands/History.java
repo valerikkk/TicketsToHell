@@ -2,7 +2,6 @@ package commands;
 
 import managers.AllManagers;
 import managers.HistoryCommand;
-
 import java.util.Queue;
 
 public class History extends Command{

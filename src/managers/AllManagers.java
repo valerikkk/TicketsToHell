@@ -1,7 +1,7 @@
 package managers;
 import java.util.Scanner;
 
-public class AllManagers {
+public class AllManagers{
     static AllManagers managers;
     CommandManager commandManager;
     CollectionManager collectionManager;
@@ -10,6 +10,7 @@ public class AllManagers {
     CSVparser csvParser;
     FileWriter fileWriter;
     HistoryCommand historyCommand;
+    String path;
     AllManagers(){
     }
     public static AllManagers createAllManagers(){
@@ -45,11 +46,6 @@ public class AllManagers {
     public static AllManagers getManagers() {
         return managers;
     }
-
-    public CSVparser getCsvParser() {
-        return csvParser;
-    }
-
     public void setCsvParser(CSVparser csvParser) {
         this.csvParser = csvParser;
     }
@@ -68,5 +64,13 @@ public class AllManagers {
 
     public void setHistoryCommand(HistoryCommand historyCommand) {
         this.historyCommand = historyCommand;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

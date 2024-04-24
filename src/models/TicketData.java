@@ -1,8 +1,6 @@
 package models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import java.util.Objects;
 
 public class TicketData {
@@ -52,10 +50,6 @@ public class TicketData {
         else{
             this.coordinates = coordinates;
         }
-    }
-
-    public void setCreationDate() {
-        this.creationDate = LocalDateTime.now();
     }
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;

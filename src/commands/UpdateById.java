@@ -3,9 +3,6 @@ package commands;
 import managers.AllManagers;
 import managers.CollectionManager;
 import managers.ConsoleManager;
-import managers.DataCollector;
-
-import java.util.NoSuchElementException;
 
 public class UpdateById extends Command{
     public UpdateById() {
@@ -14,7 +11,6 @@ public class UpdateById extends Command{
     @Override
     public void run() {
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();
-        DataCollector dataCollector = new DataCollector();
         ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
         try{
             collectionManager.updateById(Long.parseLong(consoleManager.getTokens()[1]));

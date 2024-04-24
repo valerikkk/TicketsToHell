@@ -1,7 +1,6 @@
 package commands;
 
 import managers.AllManagers;
-
 import java.util.Vector;
 
 public class Clear extends Command {

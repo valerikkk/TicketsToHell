@@ -3,7 +3,6 @@ package commands;
 import managers.AllManagers;
 import managers.CollectionManager;
 import models.Ticket;
-
 import java.util.Vector;
 
 public class Reorder extends Command{

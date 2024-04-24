@@ -1,9 +1,7 @@
 package commands;
 
-
 import managers.AllManagers;
 import managers.CollectionManager;
-import managers.ConsoleManager;
 import models.Ticket;
 
 public class Info extends Command{

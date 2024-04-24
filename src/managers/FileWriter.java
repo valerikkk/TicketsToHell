@@ -1,15 +1,13 @@
 package managers;
 
-import managers.CollectionManager;
-import models.Ticket;
-
 import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileWriter {
     public void write(CollectionManager coll){
-        try(FileOutputStream out=new FileOutputStream("notes.csv");
+        try(FileOutputStream out = new FileOutputStream(AllManagers.createAllManagers().getPath());
             BufferedOutputStream bos = new BufferedOutputStream(out))
         {
             // перевод строки в байты

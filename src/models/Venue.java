@@ -70,8 +70,4 @@ public class Venue {
     public int hashCode() {
         return Objects.hash(name, capacity, type);
     }
-
-    public int compareTo(Venue v) {
-            return this.capacity.compareTo(v.getCapacity());
-    }
 }

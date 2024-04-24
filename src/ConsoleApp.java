@@ -10,7 +10,7 @@ public class ConsoleApp {
         CSVparser pars = new CSVparser();
         all.setCsvParser(pars);
         CSVManager csvManager = new CSVManager();
-        csvManager.ticketParse(pars.parse("notes.csv"));
+
         FileWriter fileWriter = new FileWriter();
         HistoryCommand historyCommand = new HistoryCommand();
         all.setFileWriter(fileWriter);
@@ -32,8 +32,10 @@ public class ConsoleApp {
                 new Save(),
                 new Reorder(),
                 new History()));
-
         all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
+        System.out.println("Введите путь к файлу");
+        AllManagers.createAllManagers().setPath(AllManagers.createAllManagers().getScanner().nextLine());
+        csvManager.ticketParse(pars.parse(AllManagers.createAllManagers().getPath()));
         all.getConsoleManager().runFromConsole();
     }
 }

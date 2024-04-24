@@ -5,7 +5,6 @@ import managers.CollectionManager;
 import managers.ConsoleManager;
 import models.Ticket;
 import models.TicketType;
-
 import java.util.EnumSet;
 import java.util.Vector;
 

@@ -11,8 +11,6 @@ import java.util.Objects;
     private float price; //Значение поля должно быть больше 0
     private TicketType type; //Поле не может быть null
     private Venue venue; //Поле не может быть null
-         public Ticket() {
-        }
     public Ticket(Long id, TicketData ticketData) {
         this.id = id;
         this.name = ticketData.getName();
@@ -22,23 +20,9 @@ import java.util.Objects;
         this.type = ticketData.getType();
         this.venue = ticketData.getVenue();
     }
-
     public Long getId() {
         return id;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
     public TicketType getType() {
         return type;
     }
@@ -49,31 +33,6 @@ import java.util.Objects;
         public void setId(Long id) {
             this.id = id;
         }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setCoordinates(Coordinates coordinates) {
-            this.coordinates = coordinates;
-        }
-
-        public void setCreationDate() {
-            this.creationDate = LocalDateTime.now();
-        }
-
-        public void setPrice(float price) {
-            this.price = price;
-        }
-
-        public void setType(TicketType type) {
-            this.type = type;
-        }
-
-        public void setVenue(Venue venue) {
-            this.venue = venue;
-        }
-
         @Override
     public String toString() {
         return "Ticket{" +

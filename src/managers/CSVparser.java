@@ -2,9 +2,9 @@ package managers;
 
 import java.io.FileInputStream;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class CSVparser {
 
@@ -22,7 +22,7 @@ public class CSVparser {
             result = res.split("\n");
             input.close();
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            System.out.println(ioe.getMessage());
         }
         return result;
     }
