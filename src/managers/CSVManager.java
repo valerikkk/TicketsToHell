@@ -12,9 +12,10 @@ public class CSVManager {
     }
     CollectionManager collectionManager = AllManagers.managers.getCollectionManager();
     public void ticketParse(String[] data) {
+        try {
             for (String cont : data) {
                 String[] tempArr = cont.split(",");
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern( "dd/MM/yyyy - HH:mm:ss" );
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
                 String name = tempArr[0]; //Поле не может быть null, Строка не может быть пустой
                 Coordinates coordinates = new Coordinates(Double.parseDouble(tempArr[1]), Float.parseFloat(tempArr[2])); //Поле не может быть null
                 LocalDateTime creationDate = LocalDateTime.parse(tempArr[3], dateTimeFormatter); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -34,5 +35,10 @@ public class CSVManager {
                 ticketData.setVenue(venue);
                 collectionManager.addTicket(ticketData);
             }
+        }catch (IndexOutOfBoundsException ex){
+            System.out.println("Выбранный файл не соответствует стандарту");
+            AllManagers.getManagers().setPath(null);
+            System.out.println("Введите путь к корректному фалйу, где есть все поля, необходимые для инициализации билета");
+        }
     }
 }

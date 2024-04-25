@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.NullValueException;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -37,7 +39,7 @@ public class TicketData {
 
     public void setName(String name) {
         if (name == null || name.isEmpty()){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.name = name;
@@ -45,7 +47,7 @@ public class TicketData {
     }
     public void setCoordinates(Coordinates coordinates) {
         if (coordinates == null){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else{
             this.coordinates = coordinates;
@@ -57,7 +59,7 @@ public class TicketData {
 
     public void setPrice(float price) {
         if (price <= 0.0){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.price = price;
@@ -66,7 +68,7 @@ public class TicketData {
 
     public void setType(TicketType type) {
         if (type == null){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.type = type;
@@ -75,7 +77,7 @@ public class TicketData {
 
     public void setVenue(Venue venue) {
         if (venue == null){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.venue = venue;

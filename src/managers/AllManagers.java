@@ -1,4 +1,5 @@
 package managers;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class AllManagers{
@@ -69,8 +70,7 @@ public class AllManagers{
     public String getPath() {
         return path;
     }
-
     public void setPath(String path) {
-        this.path = path;
+            this.path = path;
     }
 }

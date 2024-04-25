@@ -1,5 +1,7 @@
 
 package models;
+import exceptions.NullValueException;
+
 import java.util.Objects;
 public class Venue {
 
@@ -28,7 +30,7 @@ public class Venue {
 
     public void setName(String name) {
         if (name == null || name.isEmpty()){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.name = name;
@@ -37,7 +39,7 @@ public class Venue {
 
     public void setCapacity(Integer capacity) {
         if (capacity == null || capacity == 0){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.capacity = capacity;
@@ -46,7 +48,7 @@ public class Venue {
 
     public void setType(VenueType type) {
         if (type == null){
-            throw new RuntimeException();
+            throw new NullValueException();
         }
         else {
             this.type = type;

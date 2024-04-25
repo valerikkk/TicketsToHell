@@ -21,8 +21,10 @@ public class CSVparser {
             String res = String.valueOf(arr2);
             result = res.split("\n");
             input.close();
+            AllManagers.getManagers().setPath(path);
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
+            System.out.println("Введите корректный путь к файлу");
         }
         return result;
     }

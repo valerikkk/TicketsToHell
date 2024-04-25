@@ -32,10 +32,12 @@ public class ConsoleApp {
                 new Save(),
                 new Reorder(),
                 new History()));
-        all.setConsoleManager(new ConsoleManager(AllManagers.getManagers().getScanner(), AllManagers.getManagers().getCommandManager()));
+        all.setConsoleManager(new ConsoleManager(all.getScanner(), all.getCommandManager()));
         System.out.println("Введите путь к файлу");
-        AllManagers.createAllManagers().setPath(AllManagers.createAllManagers().getScanner().nextLine());
-        csvManager.ticketParse(pars.parse(AllManagers.createAllManagers().getPath()));
+        while(all.getPath()==null){
+            String path = all.getScanner().nextLine();
+            csvManager.ticketParse(pars.parse(path));
+        }
         all.getConsoleManager().runFromConsole();
     }
 }

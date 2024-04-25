@@ -16,7 +16,7 @@ public class DataCollector{
         collectPrice(ticketData);
         collectTicketType(ticketData);
         collectVenue(ticketData);
-        System.out.println("NORM");
+        System.out.println("success");
         return ticketData;
     }
     public void collectName(TicketData ticketData){
