@@ -9,15 +9,6 @@ public class Coordinates {
         this.x = x;
         this.y = y;
     }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -27,21 +18,5 @@ public class Coordinates {
     }
     public String fileToString() {
         return x +  "," + y;
-    }
-
-    public void setX(Double x) {
-        if (x == null){
-            throw new RuntimeException();
-        }
-        else {
-            this.x = x;
-        }
-    }
-    public void setY(Float y) {
-        if (y == null) {
-            throw new RuntimeException();
-        } else {
-            this.y = y;
-        }
     }
 }

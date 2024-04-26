@@ -1,30 +1,48 @@
 package managers;
 
 import models.*;
-
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
+/**
+ * The type Csv manager.
+ */
 public class CSVManager {
+    /**
+     * Instantiates a new Csv manager.
+     */
     public CSVManager() {
     }
+
+    /**
+     * The import of Collection manager.
+     */
     CollectionManager collectionManager = AllManagers.managers.getCollectionManager();
+
+    /**
+     * Assigning Values from a Parsed File to Ticket Fields.
+     *
+     * @param data the data
+     */
     public void ticketParse(String[] data) {
         try {
+            if(AllManagers.counterOfErrors==3){
+                System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                System.exit(112);
+                AllManagers.counterOfErrors=0;
+            }
             for (String cont : data) {
                 String[] tempArr = cont.split(",");
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
-                String name = tempArr[0]; //Поле не может быть null, Строка не может быть пустой
-                Coordinates coordinates = new Coordinates(Double.parseDouble(tempArr[1]), Float.parseFloat(tempArr[2])); //Поле не может быть null
-                LocalDateTime creationDate = LocalDateTime.parse(tempArr[3], dateTimeFormatter); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-                float price = Float.parseFloat(tempArr[4]); //Значение поля должно быть больше 0
-                TicketType type = TicketType.valueOf(tempArr[5]); //Поле не может быть null
+                String name = tempArr[0].trim(); //Поле не может быть null, Строка не может быть пустой
+                Coordinates coordinates = new Coordinates(Double.parseDouble(tempArr[1].trim()), Float.parseFloat(tempArr[2].trim())); //Поле не может быть null
+                LocalDateTime creationDate = LocalDateTime.parse(tempArr[3].trim(), dateTimeFormatter); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+                float price = Float.parseFloat(tempArr[4].trim()); //Значение поля должно быть больше 0
+                TicketType type = TicketType.valueOf(tempArr[5].trim()); //Поле не может быть null
                 Venue venue = new Venue(); //Поле не может быть null\
-                venue.setName(tempArr[6]);
-                venue.setCapacity(Integer.parseInt(tempArr[7]));
-                venue.setType(VenueType.valueOf(tempArr[8]));
+                venue.setName(tempArr[6].trim());
+                venue.setCapacity(Integer.parseInt(tempArr[7].trim()));
+                venue.setType(VenueType.valueOf(tempArr[8].trim()));
                 venue.setId(Math.abs((long) venue.hashCode()));
                 TicketData ticketData = new TicketData();
                 ticketData.setName(name);
@@ -36,6 +54,7 @@ public class CSVManager {
                 collectionManager.addTicket(ticketData);
             }
         }catch (IndexOutOfBoundsException ex){
+            AllManagers.counterOfErrors++;
             System.out.println("Выбранный файл не соответствует стандарту");
             AllManagers.getManagers().setPath(null);
             System.out.println("Введите путь к корректному фалйу, где есть все поля, необходимые для инициализации билета");

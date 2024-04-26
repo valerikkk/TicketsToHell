@@ -1,12 +1,25 @@
 package commands;
 
 import exceptions.NoSuchCommandException;
+import exceptions.ScriptRecursionException;
 import managers.*;
 
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+
+/**
+ * The type Execute script.
+ */
 public class ExecuteScript extends Command {
+    /**
+     * Instantiates a new Execute script.
+     */
     public ExecuteScript(){
-        super("execute_script", "вызывает и исполняет скрипт пользователя", "YES");
+        super("execute_script", "вызывает и исполняет скрипт пользователя. Необходимо ввести путь к скрипту через пробел.", "YES");
     }
+    /**
+     * Command to execute script given user.
+     */
     @Override
     public void run() {
         ConsoleManager consoleManager = AllManagers.getManagers().getConsoleManager();
@@ -16,8 +29,8 @@ public class ExecuteScript extends Command {
             scriptExecuter.exec((consoleManager.getTokens())[1], commandManager);
         }catch (NoSuchCommandException ex){
             System.out.println(ex.getMessage());
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Напишите путь к скрипту");
+        }catch (ArrayIndexOutOfBoundsException ex){
+            System.out.println("Введите корректный путь");
         }
     }
 }

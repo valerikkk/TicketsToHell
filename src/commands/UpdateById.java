@@ -4,10 +4,19 @@ import managers.AllManagers;
 import managers.CollectionManager;
 import managers.ConsoleManager;
 
+/**
+ * The type Update by id.
+ */
 public class UpdateById extends Command{
+    /**
+     * Instantiates a new Update by id.
+     */
     public UpdateById() {
-        super("update", "обновить значение элемента коллекции, id которого равен заданному","YES");
+        super("update", "обновить значение элемента коллекции, id которого равен заданному. Необходимо ввести id через пробел.","YES");
     }
+    /**
+     * command to update the value of a collection item whose ID is equal to the specified.
+     */
     @Override
     public void run() {
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();

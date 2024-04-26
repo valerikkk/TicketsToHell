@@ -8,11 +8,19 @@ import models.TicketType;
 import java.util.EnumSet;
 import java.util.Vector;
 
+/**
+ * The type Count type.
+ */
 public class CountType extends Command{
+    /**
+     * Instantiates a new Count type.
+     */
     public CountType() {
-        super("count_by","вывести количество элементов, значения поля type равно заданному", "YES");
+        super("count_by","вывести количество элементов, значения поля type равно заданному. Необходимо ввести type через пробел", "YES");
     }
-
+    /**
+     * Command to get count of elements with given type.
+     */
     @Override
     public void run() {
         ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
@@ -32,7 +40,8 @@ public class CountType extends Command{
             for (TicketType ticketType:ticketTypes) {
                 System.out.println(ticketType);
             }
+        }catch(ArrayIndexOutOfBoundsException ex){
+            System.out.println("Можно хотя бы попытаться ввести тип");
         }
-
     }
 }

@@ -3,7 +3,13 @@ package managers;
 import models.Ticket;
 import java.util.Comparator;
 
+/**
+ * The type Comparator venue.
+ */
 public class ComparatorVenue implements Comparator<Ticket> {
+    /**
+     * Instantiates a new Comparator venue.
+     */
     public ComparatorVenue() {
     }
     @Override

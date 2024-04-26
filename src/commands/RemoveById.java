@@ -4,10 +4,19 @@ import managers.AllManagers;
 import managers.CollectionManager;
 import managers.ConsoleManager;
 
+/**
+ * The type Remove by id.
+ */
 public class RemoveById extends Command{
+    /**
+     * Instantiates a new Remove by id.
+     */
     public RemoveById() {
-        super("remove_by", "удалить элемент из коллекции по его id", "YES");
+        super("remove_by", "удалить элемент из коллекции по его id. Необходимо ввести id через пробел.", "YES");
     }
+    /**
+     * Command to delete element for it id.
+     */
     @Override
     public void run() {
         CollectionManager collectionManager = AllManagers.getManagers().getCollectionManager();

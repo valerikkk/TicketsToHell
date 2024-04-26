@@ -6,8 +6,17 @@ import java.time.LocalDateTime;
 import java.util.EnumSet;
 import java.util.Scanner;
 
+/**
+ * The type Data collector.
+ */
 public class DataCollector{
     Scanner scanner = AllManagers.getManagers().getScanner();
+
+    /**
+     * Wrap ticket data from user info.
+     *
+     * @return the ticket data
+     */
     public TicketData wrap(){
         TicketData ticketData = new TicketData();
         ticketData.setCreationDate(LocalDateTime.now());
@@ -19,11 +28,23 @@ public class DataCollector{
         System.out.println("success");
         return ticketData;
     }
+
+    /**
+     * Collect name.
+     *
+     * @param ticketData the ticket data
+     */
     public void collectName(TicketData ticketData){
         System.out.println("Введите название билета");
         String name = collectString();
         ticketData.setName(name);
     }
+
+    /**
+     * Collect coordinates.
+     *
+     * @param ticketData the ticket data
+     */
     public void collectCoordinates(TicketData ticketData){
         System.out.println("Введите координату x (double)");
         double x = collectDouble();
@@ -31,16 +52,34 @@ public class DataCollector{
         float y = collectAllFloat();
         ticketData.setCoordinates(new Coordinates(x, y));
     }
+
+    /**
+     * Collect price.
+     *
+     * @param ticketData the ticket data
+     */
     public void collectPrice(TicketData ticketData){
         System.out.println("Введите цену билета");
         float price=collectFloat();
         ticketData.setPrice(price);
     }
+
+    /**
+     * Collect ticket type.
+     *
+     * @param ticketData the ticket data
+     */
     public void collectTicketType(TicketData ticketData){
         System.out.println("Введите тип билета");
         TicketType type = collectTicketType();
         ticketData.setType(type);
     }
+
+    /**
+     * Collect venue.
+     *
+     * @param ticketData the ticket data
+     */
     public void collectVenue(TicketData ticketData){
         Venue venue = new Venue();
         System.out.println("Введите место проведения мероприятия");
@@ -55,6 +94,14 @@ public class DataCollector{
         venue.setId(Math.abs((long)venue.hashCode()));
         ticketData.setVenue(venue);
     }
+
+    /**
+     * Collect value from console.
+     *
+     * @return the string
+     * @throws NullValueException       the null value exception
+     * @throws IllegalArgumentException the illegal argument exception
+     */
     public String collectValue() throws NullValueException, IllegalArgumentException{
         String value = scanner.nextLine();
         if(value.isEmpty()){
@@ -62,18 +109,41 @@ public class DataCollector{
         }
         return value;
     }
+
+    /**
+     * Collect String from console
+     *
+     * @return the string
+     */
     public String collectString(){
         while(true){
             try {
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 return collectValue();
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect Integer from string.
+     *
+     * @return the integer
+     */
     public Integer collectInteger(){
         while(true){
             try {
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 int capacity = Integer.parseInt(collectValue());
                 if(capacity<=0){
                     System.out.println("значение должно быть >=0");
@@ -82,25 +152,51 @@ public class DataCollector{
                 return capacity;
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип int, ");
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect double from string.
+     *
+     * @return the double
+     */
     public Double collectDouble(){
         while(true){
             try{
+                if(AllManagers.counterOfErrors==3){
+                System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                System.exit(112);
+                AllManagers.counterOfErrors=0;
+            }
                 return Double.parseDouble(collectValue());
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип double");
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect float from string with restrictions.
+     *
+     * @return the float
+     */
     public Float collectFloat(){
         while(true){
             try {
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 float price = Float.parseFloat(collectValue());
                 if(price<=0){
                     System.out.println("Значение этого поля должно быть >= 0");
@@ -109,40 +205,79 @@ public class DataCollector{
                 return price;
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип float, значение больше или равно 0");
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect float without restrictions.
+     *
+     * @return the float
+     */
     public float collectAllFloat(){
         while(true){
             try {
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 return Float.parseFloat(collectValue());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип float, значение больше или равно 0");
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect ticket type ticket type.
+     *
+     * @return the ticket type
+     */
     public TicketType collectTicketType(){
         while(true){
             try{
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 return TicketType.valueOf(collectValue().toUpperCase());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
+                AllManagers.counterOfErrors++;
             }catch (IllegalArgumentException ex){
                 System.out.println("Введите одно из предложенных значений");
                 EnumSet<TicketType> ticketTypes = EnumSet.allOf(TicketType.class);
                 for (TicketType ticketType:ticketTypes) {
                     System.out.println(ticketType);
                 }
+                AllManagers.counterOfErrors++;
             }
         }
     }
+
+    /**
+     * Collect venue type from string.
+     *
+     * @return the venue type
+     */
     public VenueType collectVenueType(){
         while(true){
             try{
+                if(AllManagers.counterOfErrors==3){
+                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
+                    System.exit(112);
+                    AllManagers.counterOfErrors=0;
+                }
                 return VenueType.valueOf(collectValue().toUpperCase());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
@@ -152,19 +287,8 @@ public class DataCollector{
                 for (VenueType venueType:venueTypes) {
                     System.out.println(venueType);
                 }
+                AllManagers.counterOfErrors++;
             }
         }
-    }
-        public long getIdFromTokens(String[] tokens){
-        long id = 0;
-        ConsoleManager consoleManager = AllManagers.createAllManagers().getConsoleManager();
-        try{
-            id = Long.parseLong(consoleManager.getTokens()[1]);
-        }catch(NumberFormatException ex){
-            System.out.println("ID должно быть long");
-        }catch (IndexOutOfBoundsException r){
-            System.out.println("Напишите хотя бы id");
-        }
-        return id;
     }
 }

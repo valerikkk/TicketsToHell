@@ -1,3 +1,4 @@
-help
+info
+reorder
+filter_by CHEAP
 show
-exit
