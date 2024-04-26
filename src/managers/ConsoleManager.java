@@ -34,26 +34,21 @@ public class ConsoleManager {
         try {
             AllManagers.getManagers().getCommandManager().callCommand("help");
             while (true) {
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 income = scanner.nextLine().trim().toLowerCase();
                 tokens = income.split(" ");
                 try {
                     if (cmd.getCommands().get(tokens[0]).isComposite().equalsIgnoreCase("NO")) {
                         if (!tokens[tokens.length-1].isEmpty() && tokens.length>1){
-                            throw new NoSuchCommandException();
+                            throw new IllegalArgumentException();
                         }
                     }
                     cmd.callCommand(tokens[0]);
                 } catch (NoSuchCommandException ex) {
                     ex.getMessage();
-                    AllManagers.counterOfErrors++;
                 }catch (NullPointerException ex){
                     System.out.println("Команда с таким названием не найдена");
-                    AllManagers.counterOfErrors++;
+                }catch (IllegalArgumentException e){
+                    System.out.println("Эта команда не подразумевает наличие параметра");
                 }
             }
         } catch (NoSuchElementException e) {

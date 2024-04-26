@@ -104,7 +104,7 @@ public class DataCollector{
      */
     public String collectValue() throws NullValueException, IllegalArgumentException{
         String value = scanner.nextLine();
-        if(value.isEmpty()){
+        if(value.trim().isEmpty()){
             throw new NullValueException();
         }
         return value;
@@ -118,15 +118,9 @@ public class DataCollector{
     public String collectString(){
         while(true){
             try {
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 return collectValue();
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }
         }
     }
@@ -139,11 +133,6 @@ public class DataCollector{
     public Integer collectInteger(){
         while(true){
             try {
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 int capacity = Integer.parseInt(collectValue());
                 if(capacity<=0){
                     System.out.println("значение должно быть >=0");
@@ -152,10 +141,8 @@ public class DataCollector{
                 return capacity;
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип int, ");
-                AllManagers.counterOfErrors++;
             }
         }
     }
@@ -168,18 +155,11 @@ public class DataCollector{
     public Double collectDouble(){
         while(true){
             try{
-                if(AllManagers.counterOfErrors==3){
-                System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                System.exit(112);
-                AllManagers.counterOfErrors=0;
-            }
                 return Double.parseDouble(collectValue());
             }catch (NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип double");
-                AllManagers.counterOfErrors++;
             }
         }
     }
@@ -192,11 +172,6 @@ public class DataCollector{
     public Float collectFloat(){
         while(true){
             try {
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 float price = Float.parseFloat(collectValue());
                 if(price<=0){
                     System.out.println("Значение этого поля должно быть >= 0");
@@ -205,10 +180,8 @@ public class DataCollector{
                 return price;
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип float, значение больше или равно 0");
-                AllManagers.counterOfErrors++;
             }
         }
     }
@@ -221,46 +194,32 @@ public class DataCollector{
     public float collectAllFloat(){
         while(true){
             try {
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 return Float.parseFloat(collectValue());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }catch(IllegalArgumentException ex){
                 System.out.println("Введите тип float, значение больше или равно 0");
-                AllManagers.counterOfErrors++;
             }
         }
     }
 
     /**
-     * Collect ticket type ticket type.
+     * Collect ticket type.
      *
      * @return the ticket type
      */
     public TicketType collectTicketType(){
         while(true){
             try{
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 return TicketType.valueOf(collectValue().toUpperCase());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
-                AllManagers.counterOfErrors++;
             }catch (IllegalArgumentException ex){
                 System.out.println("Введите одно из предложенных значений");
                 EnumSet<TicketType> ticketTypes = EnumSet.allOf(TicketType.class);
                 for (TicketType ticketType:ticketTypes) {
                     System.out.println(ticketType);
                 }
-                AllManagers.counterOfErrors++;
             }
         }
     }
@@ -273,11 +232,6 @@ public class DataCollector{
     public VenueType collectVenueType(){
         while(true){
             try{
-                if(AllManagers.counterOfErrors==3){
-                    System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                    System.exit(112);
-                    AllManagers.counterOfErrors=0;
-                }
                 return VenueType.valueOf(collectValue().toUpperCase());
             }catch(NullValueException ex){
                 System.out.println("Значение этого поля не может быть пустым");
@@ -287,7 +241,6 @@ public class DataCollector{
                 for (VenueType venueType:venueTypes) {
                     System.out.println(venueType);
                 }
-                AllManagers.counterOfErrors++;
             }
         }
     }

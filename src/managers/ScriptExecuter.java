@@ -41,8 +41,9 @@ public class ScriptExecuter {
                     consoleManager.setTokens(com.split(" "));
                     if (consoleManager.getTokens().length > 1 && consoleManager.tokens[1].equals(path)) {
                         throw new ScriptRecursionException();
+                    }else{
+                        commandManager.callCommand(consoleManager.getTokens()[0]);
                     }
-                    commandManager.callCommand(consoleManager.getTokens()[0]);
                 } catch (NullPointerException ex) {
                     throw new NoSuchCommandException();
                 } catch (ScriptRecursionException e) {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * The type All managers.
  */
-public class AllManagers{
+public class AllManagers {
     /**
      * The ability to get Managers from every class in app.
      */
@@ -42,14 +42,9 @@ public class AllManagers{
      */
     String path;
     /**
-     * The Counter of errors.
-     */
-    static int counterOfErrors = 0;
-
-    /**
      * Instantiates a new All managers.
      */
-    AllManagers(){
+    AllManagers() {
     }
 
     /**
@@ -57,8 +52,8 @@ public class AllManagers{
      *
      * @return the all managers
      */
-    public static AllManagers createAllManagers(){
-        if(managers==null){
+    public static AllManagers createAllManagers() {
+        if (managers == null) {
             managers = new AllManagers();
         }
         return managers;
@@ -205,24 +200,6 @@ public class AllManagers{
      * @param path the path
      */
     public void setPath(String path) {
-            this.path = path;
-    }
-
-    /**
-     * Gets counter of errors.
-     *
-     * @return the counter of errors
-     */
-    public static int getCounterOfErrors() {
-        return counterOfErrors;
-    }
-
-    /**
-     * Sets counter of errors.
-     *
-     * @param counterOfErrors the counter of errors
-     */
-    public static void setCounterOfErrors(int counterOfErrors) {
-        AllManagers.counterOfErrors = counterOfErrors;
+        this.path = path;
     }
 }

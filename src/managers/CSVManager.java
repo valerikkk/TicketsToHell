@@ -1,5 +1,6 @@
 package managers;
 
+import exceptions.NullValueException;
 import models.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,11 +27,6 @@ public class CSVManager {
      */
     public void ticketParse(String[] data) {
         try {
-            if(AllManagers.counterOfErrors==3){
-                System.err.println("Слишком много неправильных попыток. BYE-BYE!");
-                System.exit(112);
-                AllManagers.counterOfErrors=0;
-            }
             for (String cont : data) {
                 String[] tempArr = cont.split(",");
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
@@ -40,21 +36,25 @@ public class CSVManager {
                 float price = Float.parseFloat(tempArr[4].trim()); //Значение поля должно быть больше 0
                 TicketType type = TicketType.valueOf(tempArr[5].trim()); //Поле не может быть null
                 Venue venue = new Venue(); //Поле не может быть null\
-                venue.setName(tempArr[6].trim());
-                venue.setCapacity(Integer.parseInt(tempArr[7].trim()));
-                venue.setType(VenueType.valueOf(tempArr[8].trim()));
-                venue.setId(Math.abs((long) venue.hashCode()));
-                TicketData ticketData = new TicketData();
-                ticketData.setName(name);
-                ticketData.setCoordinates(coordinates);
-                ticketData.setPrice(price);
-                ticketData.setType(type);
-                ticketData.setCreationDate(creationDate);
-                ticketData.setVenue(venue);
-                collectionManager.addTicket(ticketData);
+                try{
+                    venue.setName(tempArr[6].trim());
+                    venue.setCapacity(Integer.parseInt(tempArr[7].trim()));
+                    venue.setType(VenueType.valueOf(tempArr[8].trim()));
+                    venue.setId(Math.abs((long) venue.hashCode()));
+                    TicketData ticketData = new TicketData();
+                    ticketData.setName(name);
+                    ticketData.setCoordinates(coordinates);
+                    ticketData.setPrice(price);
+                    ticketData.setType(type);
+                    ticketData.setCreationDate(creationDate);
+                    ticketData.setVenue(venue);
+                    collectionManager.addTicket(ticketData);
+                }catch (NullValueException ex){
+                    System.out.println(ex.getMessage());
+                    System.exit(1);
+                }
             }
         }catch (IndexOutOfBoundsException ex){
-            AllManagers.counterOfErrors++;
             System.out.println("Выбранный файл не соответствует стандарту");
             AllManagers.getManagers().setPath(null);
             System.out.println("Введите путь к корректному фалйу, где есть все поля, необходимые для инициализации билета");

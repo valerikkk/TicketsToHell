@@ -54,6 +54,9 @@ public class TicketData {
         }
     }
     public void setCreationDate(LocalDateTime creationDate) {
+        if(creationDate == null){
+            throw new NullValueException();
+        }
         this.creationDate = creationDate;
     }
 

@@ -1,11 +1,7 @@
 package commands;
 
 import exceptions.NoSuchCommandException;
-import exceptions.ScriptRecursionException;
 import managers.*;
-
-import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 /**
  * The type Execute script.

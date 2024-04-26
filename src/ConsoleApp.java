@@ -33,10 +33,12 @@ public class ConsoleApp {
                 new Reorder(),
                 new History()));
         all.setConsoleManager(new ConsoleManager(all.getScanner(), all.getCommandManager()));
-        System.out.println("Введите путь к файлу");
-        while(all.getPath()==null){
-            String path = all.getScanner().nextLine();
+        if(args.length>0){
+            String path = args[0];
             csvManager.ticketParse(pars.parse(path));
+            all.setPath(path);
+        }else{
+            System.out.println("Передайте аргументом путь к файлу");
         }
         all.getConsoleManager().runFromConsole();
     }
